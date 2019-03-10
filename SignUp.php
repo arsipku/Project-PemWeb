@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+	<link rel="stylesheet" href="register_hiasan.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<title>Database Mahasiswa</title>
-	<nav class="navbar navbar-default">
+	<!-- <nav class="navbar navbar-default">
 		<div class= "container-fluid">
 			<div class = "navbar-header">
 				<h4 style = "color:grey;">DataBase mhs_mahasiswa</h4>
 			</div>
 		</div>
-	</nav>
+	</nav> -->
 	
 		
 </head>
@@ -51,7 +54,7 @@
 			}
 	}
 	?>
-	<div class = "container" style="width:50%; padding: 10px; margin : 0 auto;">
+	<!-- <div class = "container" style="width:50%; padding: 10px; margin : 0 auto;">
 		<i><h4 style = "padding : 10px;">Registrasi User Baru</h4></i>
 		<form action = 'SignUp.php' method="POST">
 			<div class = "form-group">
@@ -83,7 +86,51 @@
 				<input type="submit" class="btn btn-primary" value="Simpan" name = "Simpan">
 				<a href = "login_page.php" class="btn btn-default">cancel</a>
 		</form>
-	</div>
-	</div>
+	</div> -->
+
+	<div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-img-left d-none d-md-flex">
+             <!-- Background image for card set in CSS! -->
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">Register</h5>
+            <form class="form-signin">
+              <div class="form-label-group">
+                <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus>
+                <label for="inputUserame">Username</label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+                <label for="inputEmail">Email address</label>
+              </div>
+              
+              <hr>
+
+              <div class="form-label-group">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <label for="inputPassword">Password</label>
+              </div>
+              
+              <div class="form-label-group">
+                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
+                <label for="inputConfirmPassword">Confirm password</label>
+              </div>
+
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+              <hr class="my-4">
+			  <h5 class="text-center">Sudah punya akun?</h5>
+			  <a class="d-block text-center mt-2 small btn btn-info" href="#">Sign In</a>
+             
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+	
 </body>
 </html>
