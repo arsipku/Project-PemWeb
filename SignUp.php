@@ -97,18 +97,18 @@
           </div>
           <div class="card-body">
             <h5 class="card-title text-center">Register</h5>
-            <form class="form-signin">
+            <form class="form-signin" action="SignUp.php" METHOD='POST'>
               <div class="form-label-group">
-                <input type="text" id="daftarNamaDepan" class="form-control" placeholder="NamaDepan" required autofocus>
+                <input type="text" id="daftarNamaDepan" class="form-control" placeholder="NamaDepan" name="namadepan" required autofocus>
                 <label for="daftarNamaDepan">Nama Depan</label>
               </div>
 			  <div class="form-label-group">
-                <input type="text" id="daftarNamaBelakang" class="form-control" placeholder="NamaBelakang">
+                <input type="text" id="daftarNamaBelakang" class="form-control" placeholder="NamaBelakang" name="namabelakang">
                 <label for="daftarNamabelakang">Nama Belakang</label>
               </div>
 
               <div class="form-label-group">
-                <input type="email" id="daftarEmail" class="form-control" placeholder="Email address" required>
+                <input type="email" id="daftarEmail" class="form-control" placeholder="Email address" name="email" required>
                 <label for="daftarEmail">Email address</label>
               </div>
 
@@ -121,7 +121,7 @@
               <hr>
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
                 <label for="inputPassword">Password</label>
               </div>
               
