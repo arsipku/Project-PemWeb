@@ -99,14 +99,24 @@
             <h5 class="card-title text-center">Register</h5>
             <form class="form-signin">
               <div class="form-label-group">
-                <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus>
-                <label for="inputUserame">Username</label>
+                <input type="text" id="daftarNamaDepan" class="form-control" placeholder="NamaDepan" required autofocus>
+                <label for="daftarNamaDepan">Nama Depan</label>
+              </div>
+			  <div class="form-label-group">
+                <input type="text" id="daftarNamaBelakang" class="form-control" placeholder="NamaBelakang">
+                <label for="daftarNamabelakang">Nama Belakang</label>
               </div>
 
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-                <label for="inputEmail">Email address</label>
+                <input type="email" id="daftarEmail" class="form-control" placeholder="Email address" required>
+                <label for="daftarEmail">Email address</label>
               </div>
+
+			  <div class = "form-group">
+				<label for="jeniskelamin">Jenis Kelamin :</label> <br>
+				<input type = "radio"   name = 'jeniskelamin' value = 'LakiLaki'> Laki-Laki
+				<input type = "radio" 	name = 'jeniskelamin' value = 'Perempuan' required="true"> Perempuan
+			</div>
               
               <hr>
 
