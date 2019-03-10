@@ -12,7 +12,7 @@
   
   <div class="container">
     <header>
-    <nav class="navbar navbar-default">
+    <!-- <nav class="navbar navbar-default">
       <div class= "container-fluid">
         <div class = "navbar-header">
           <a style = "color:grey;" class = "navbar-brand" href = "#">Nyinyir</a>
@@ -21,7 +21,7 @@
             <li><a href="SignUp.php"><span class="btn btn-primary glyphicon glyphicon-user">  Daftar Baru</span></a></li>
         </ul>
         </div>
-    </nav>
+    </nav> -->
   </header>
   </div>
 </head>
@@ -46,10 +46,10 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Sign In</h5>
-            <form class="form-signin">
+            <form class="form-signin" action="login_page.php" method='POST'>
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Username" name="username" required autofocus>
-                <label for="inputEmail">Email address</label>
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
+                <label for="inputEmail">Username</label>
               </div>
 
               <div class="form-label-group">
@@ -61,8 +61,10 @@
                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                 <label class="custom-control-label" for="customCheck1">Remember password</label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-info btn-block text-uppercase" type="submit">Sign in</button>
               <hr class="my-4">
+              <h5 class="text-center">Belum Punya akun?</h5>
+              <center><a href="SignUp.php"><span class="btn btn-primary glyphicon glyphicon-user">  Daftar Baru</span></a></center>
             </form>
           </div>
         </div>
@@ -100,7 +102,7 @@
           $_SESSION['index'] = $index;
           echo "<script>window.location.href='mainmenu.php';</script>";
         }
-        else echo "Username / password salah";
+        else echo "<script>alert(\"Username atau password salah\")</script>";
       }
   ?>
 </body>
