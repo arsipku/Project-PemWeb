@@ -1,4 +1,4 @@
-Edit in JSFiddle Result HTML CSS JavaScript Resources:root {
+:root {
     --input-padding-x: 1.5rem;
     --input-padding-y: .75rem;
 }
@@ -11,7 +11,7 @@ body {
 .card-signin {
     border: 0;
     border-radius: 1rem;
-    box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
@@ -29,7 +29,7 @@ body {
 }
 
 .card-signin .card-body {
-    padding: 3rem;
+    padding: 2rem;
 }
 
 .form-signin {
@@ -52,7 +52,7 @@ body {
 
 .form-label-group input {
     height: auto;
-    border-radius: 3rem;
+    border-radius: 2rem;
 }
 
 .form-label-group>input,

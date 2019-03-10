@@ -49,7 +49,7 @@
             <form class="form-signin" action="login_page.php" method='POST'>
               <div class="form-label-group">
                 <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
-                <label for="inputEmail">Username</label>
+                <label for="inputUsername">Username</label>
               </div>
 
               <div class="form-label-group">

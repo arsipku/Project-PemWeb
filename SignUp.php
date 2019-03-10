@@ -6,6 +6,8 @@
 	<link rel="stylesheet" href="register_hiasan.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<title>Database Mahasiswa</title>
 	<!-- <nav class="navbar navbar-default">
 		<div class= "container-fluid">
@@ -45,12 +47,25 @@
 			);");
 			if($simpan)
 			{
-				echo "Simpan Berhasil";
-				echo "<script>window.location.href='login_page.php';</script>";
+				// echo "Simpan Berhasil";
+				// echo "<script>swal('Selamat, akun anda berhasil dibuat'); 
+				// 	window.location.href='login_page.php';</script>";
+				echo "<script>
+				$(document).ready(function() {
+					swal({ 
+					  title: 'Congratulation',
+					   text: 'Your registrasion is success',
+						type: 'notif' 
+					  }).then(function() {
+						
+						window.location.href = 'login_page.php';
+						})});
+				</script>";
+				// echo "<script>window.location.href='login_page.php';</script>";
 			}
 			else 
 			{
-				echo "Error";
+				echo "<script>swal('ERROR');</script>";
 			}
 	}
 	?>
@@ -90,7 +105,7 @@
 
 	<div class="container">
     <div class="row">
-      <div class="col-lg-10 col-md-9 mx-auto">
+      <div class="col-lg-10 col-xl-9 mx-auto">
         <div class="card card-signin flex-row my-5">
           <div class="card-img-left d-none d-md-flex">
              <!-- Background image for card set in CSS! -->
@@ -99,11 +114,11 @@
             <h5 class="card-title text-center">Register</h5>
             <form class="form-signin" action="SignUp.php" METHOD='POST'>
               <div class="form-label-group">
-                <input type="text" id="daftarNamaDepan" class="form-control" placeholder="NamaDepan" name="namadepan" required="true" autofocus>
+                <input type="text" id="daftarNamaDepan" class="form-control" placeholder="Nama Depan" name="namadepan" required="true" autofocus>
                 <label for="daftarNamaDepan">Nama Depan</label>
               </div>
 			  <div class="form-label-group">
-                <input type="text" id="daftarNamaBelakang" class="form-control" placeholder="NamaBelakang" name="namabelakang">
+                <input type="text" id="daftarNamaBelakang" class="form-control" placeholder="Nama Belakang" name="namabelakang">
                 <label for="daftarNamabelakang">Nama Belakang</label>
               </div>
 
@@ -121,16 +136,16 @@
               <hr>
 
               <div class="form-label-group">
-                <input type="text" id="daftarUsername" class="form-control" placeholder="Password" name="username" required="true">
-                <label for="inputPassword">Username</label>
+                <input type="text" id="daftarUsername" class="form-control" placeholder="Username" name="username" required="true">
+                <label for="daftarUsername">Username</label>
               </div>
               
               <div class="form-label-group">
                 <input type="password" id="daftarPassword" class="form-control" placeholder="Password" name="password" required="true">
-                <label for="inputConfirmPassword">Password</label>
+                <label for="daftarPassword">Password</label>
               </div>
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+              <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="Simpan" value="Register">
               <hr class="my-4">
 			  <h5 class="text-center">Sudah punya akun?</h5>
 			  <a class="d-block text-center mt-2 small btn btn-info" href="login_page.php">Sign In</a>
