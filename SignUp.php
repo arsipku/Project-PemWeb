@@ -90,7 +90,7 @@
 
 	<div class="container">
     <div class="row">
-      <div class="col-lg-10 col-xl-9 mx-auto">
+      <div class="col-lg-10 col-md-9 mx-auto">
         <div class="card card-signin flex-row my-5">
           <div class="card-img-left d-none d-md-flex">
              <!-- Background image for card set in CSS! -->
@@ -99,7 +99,7 @@
             <h5 class="card-title text-center">Register</h5>
             <form class="form-signin" action="SignUp.php" METHOD='POST'>
               <div class="form-label-group">
-                <input type="text" id="daftarNamaDepan" class="form-control" placeholder="NamaDepan" name="namadepan" required autofocus>
+                <input type="text" id="daftarNamaDepan" class="form-control" placeholder="NamaDepan" name="namadepan" required="true" autofocus>
                 <label for="daftarNamaDepan">Nama Depan</label>
               </div>
 			  <div class="form-label-group">
@@ -108,7 +108,7 @@
               </div>
 
               <div class="form-label-group">
-                <input type="email" id="daftarEmail" class="form-control" placeholder="Email address" name="email" required>
+                <input type="email" id="daftarEmail" class="form-control" placeholder="Email address" name="email" required="true">
                 <label for="daftarEmail">Email address</label>
               </div>
 
@@ -121,13 +121,13 @@
               <hr>
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-                <label for="inputPassword">Password</label>
+                <input type="text" id="daftarUsername" class="form-control" placeholder="Password" name="username" required="true">
+                <label for="inputPassword">Username</label>
               </div>
               
               <div class="form-label-group">
-                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
-                <label for="inputConfirmPassword">Confirm password</label>
+                <input type="password" id="daftarPassword" class="form-control" placeholder="Password" name="password" required="true">
+                <label for="inputConfirmPassword">Password</label>
               </div>
 
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
