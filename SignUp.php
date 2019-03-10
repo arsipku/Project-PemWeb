@@ -133,7 +133,7 @@
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
               <hr class="my-4">
 			  <h5 class="text-center">Sudah punya akun?</h5>
-			  <a class="d-block text-center mt-2 small btn btn-info" href="#">Sign In</a>
+			  <a class="d-block text-center mt-2 small btn btn-info" href="login_page.php">Sign In</a>
              
             </form>
           </div>
