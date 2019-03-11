@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src = "https://www.google.com/recaptcha/api.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 	<link rel="stylesheet" href="register_hiasan.css">
@@ -28,44 +29,46 @@
 		$passworddb ="";
 		if (isset($_POST['Simpan']) )
 		{
-			echo"lala";
-			$namadepan = $_POST['namadepan'];
-			$namabelakang = $_POST['namabelakang'];
-			$email = $_POST['email'];
-			$jeniskelamin = $_POST['jeniskelamin'];
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-			$d = mysqli_connect($host,$dbusername,$passworddb,$dbname);
-			$simpan = mysqli_query($d,"INSERT INTO data_user
-			 VALUES(
-			'$username',
-			'$password',
-			'$namadepan',
-			'$namabelakang',
-			'$email',
-			'$jeniskelamin'
-			);");
-			if($simpan)
+			if (isset($_POST['g-recaptcha-response'])) $captcha = $_POST['g-recaptcha-response'];
+			if (!$captcha)
 			{
-				// echo "Simpan Berhasil";
-				// echo "<script>swal('Selamat, akun anda berhasil dibuat'); 
-				// 	window.location.href='login_page.php';</script>";
-				echo "<script>
-				$(document).ready(function() {
-					swal({ 
-					  title: 'Congratulation',
-					   text: 'Your registrasion is success',
-						type: 'notif' 
-					  }).then(function() {
-						
-						window.location.href = 'login_page.php';
-						})});
-				</script>";
-				// echo "<script>window.location.href='login_page.php';</script>";
+				echo "<h2>Please check the captcha form</h2>";
+				exit;
 			}
-			else 
+			$str = "https://www.google.com/recaptcha/api/siteverify?secret=6LdMqpYUAAAAAABU7Qui5zwXabSfKnxRHx1V1ep8".
+			"&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR'];
+			$response = file_get_contents($str);
+			$response_arr = (array) json_decode($response);
+			if ($response_arr["success"]== false)
+					echo "<h2> You Are Spammer ! GET OUT </h2>";
+			else
 			{
-				echo "<script>swal('ERROR');</script>";
+				
+				$namadepan = $_POST['namadepan'];
+				$namabelakang = $_POST['namabelakang'];
+				$email = $_POST['email'];
+				$jeniskelamin = $_POST['jeniskelamin'];
+				$username = $_POST['username'];
+				$password = md5($_POST['password']);
+				$d = mysqli_connect($host,$dbusername,$passworddb,$dbname);
+				$simpan = mysqli_query($d,"INSERT INTO data_user
+				 VALUES(
+				'$username',
+				'$password',
+				'$namadepan',
+				'$namabelakang',
+				'$email',
+				'$jeniskelamin'
+				);");
+				if($simpan)
+				{
+					echo "Simpan Berhasil";
+					echo "<script>window.location.href='login_page.php';</script>";
+				}
+				else 
+				{
+					echo "Error";
+				}
 			}
 	}
 	?>
@@ -118,8 +121,8 @@
                 <label for="daftarNamaDepan">Nama Depan</label>
               </div>
 			  <div class="form-label-group">
-                <input type="text" id="daftarNamaBelakang" class="form-control" placeholder="Nama Belakang" name="namabelakang">
-                <label for="daftarNamabelakang">Nama Belakang</label>
+                <input type="text" id="daftarNamaBelakang" class="form-control" placeholder="Nama Belakang" name="namabelakang" autofocus>
+                <label for="daftarNamaBelakang">Nama Belakang</label>
               </div>
 
               <div class="form-label-group">
@@ -144,7 +147,7 @@
                 <input type="password" id="daftarPassword" class="form-control" placeholder="Password" name="password" required="true">
                 <label for="daftarPassword">Password</label>
               </div>
-
+              <div class = "g-recaptcha" data-sitekey = "6LdMqpYUAAAAAJTv_fQ3hFm1Uee_lJIZwFAdyYWl" style = "margin-bottom : 10px;"></div>
               <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="Simpan" value="Register">
               <hr class="my-4">
 			  <h5 class="text-center">Sudah punya akun?</h5>

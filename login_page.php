@@ -76,20 +76,26 @@
   <?php
       if (isset($_POST['username']) && isset($_POST['password']))
       {
-        $usernameinput = $_POST['username'];
-        $passwordinput = $_POST['password'];
+        
         $host = "localhost";
         $dbusername = "root";
         $dbname = "project_uas";
         $password ="";
+        
         $db = mysqli_connect($host,$dbusername,$password,$dbname);
+        if (! mysqli_real_escape_string($db, $_POST['password']) && ! mysqli_real_escape_string($db, $_POST['username']) )
+        {
+            die('Error: ' . mysqli_error($db));
+        }
+        $usernameinput =   $_POST['username'];
+        $passwordinput =  $_POST['password'];
         $query = "SELECT * FROM data_user LIMIT 12";
         $result = $db->query($query);
         $valid = 0;
         $index = 0;
         while($row = $result->fetch_assoc())
         {
-          if($row['username'] == $usernameinput && $row['password'] == $passwordinput)
+          if($row['username'] == $usernameinput && $row['password'] == md5($passwordinput))
           {
             $valid = 1;
             break;
