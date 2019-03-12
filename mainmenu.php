@@ -2,23 +2,18 @@
 <html>
 <head>
 	<title>Main Menu</title>
-
-	 <meta charset="utf-8">
-	 <meta name="viewport" content="width=device-width, initial-scale=1">
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<?php
+		include 'DBconnect.php';
+		include 'data.php';
 		session_start();
-		$host = "localhost";
-        $dbusername = "root";
-        $dbname = "project_uas";
-        $password ="";
-        $db = mysqli_connect($host,$dbusername,$password,$dbname);
-        $query = mysqli_query($db,"SELECT nama_depan FROM data_user");
-        $data = mysqli_fetch_row($query);
+		
 	?>
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
@@ -36,7 +31,7 @@
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	      	<li style="float:right"><a href="login_page.php">Logout</a></li>
-	        <li style="right"><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo"   ".$data[$_SESSION['index']];?></a></li>
+	        <li style="right"><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $data[$_SESSION['index']]->getnamadepan();?></a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -46,10 +41,12 @@
 	  <div class="row">
 	    <div class="col-sm-3 well">
 	      <div class="well">
-
-	        <img src="assets/profil_bawaan.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-					<p><?php echo"   ".$data[$_SESSION['index']];?></p>
-					
+	      	<?php
+	      		$gambar = $datalanjutan[$_SESSION['index']]->getprofile_pic();
+	        	echo"<img src='assets/$gambar' class='img-circle' height='65' width='65' alt='Avatar'>";
+	        ?>
+			<p><?php echo $data[$_SESSION['index']]->getnamadepan()." ".$data[$_SESSION['index']]->getnamabelakang();?></p>
+			<a href = "update_profile.php"> Update your profile </a>
 	      </div>
 	      <div class="well">
 	        <p><a href="#">Interests</a></p>

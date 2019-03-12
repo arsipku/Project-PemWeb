@@ -22,11 +22,7 @@
 </head>
 <body>
 	<?php
-		
-		$host = "localhost";
-		$dbusername = "root";
-		$dbname = "project_uas";
-		$passworddb ="";
+		include 'DBconnect.php';
 		if (isset($_POST['Simpan']) )
 		{
 			if (isset($_POST['g-recaptcha-response'])) $captcha = $_POST['g-recaptcha-response'];
@@ -40,29 +36,40 @@
 			$response = file_get_contents($str);
 			$response_arr = (array) json_decode($response);
 			if ($response_arr["success"]== false)
-					echo "<h2> You Are Spammer ! GET OUT </h2>";
+					echo "<h2> Fatal Error </h2>";
 			else
-			{
-				
+			{	
 				$namadepan = $_POST['namadepan'];
 				$namabelakang = $_POST['namabelakang'];
 				$email = $_POST['email'];
 				$jeniskelamin = $_POST['jeniskelamin'];
 				$username = $_POST['username'];
-				$password = md5($_POST['password']);
-				$d = mysqli_connect($host,$dbusername,$passworddb,$dbname);
-				$simpan = mysqli_query($d,"INSERT INTO data_user
+				$passworduser = md5($_POST['password']);
+				$simpan = mysqli_query($db,"INSERT INTO data_user
 				 VALUES(
 				'$username',
-				'$password',
+				'$passworduser',
 				'$namadepan',
 				'$namabelakang',
 				'$email',
 				'$jeniskelamin'
 				);");
-				if($simpan)
+
+				$profile_pic = "profil_bawaan.jpg";
+
+				$simpan2 = mysqli_query($db,"INSERT INTO data_user_lanjutan 
+				 VALUES(
+				'$username',
+				'$profile_pic',
+				'',
+				'',
+				'',
+				'',
+				''
+				);");
+
+				if($simpan && $simpan2)
 				{
-					echo "Simpan Berhasil";
 					echo "<script>window.location.href='login_page.php';</script>";
 				}
 				else 

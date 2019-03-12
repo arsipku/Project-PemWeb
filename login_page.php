@@ -77,11 +77,7 @@
       if (isset($_POST['username']) && isset($_POST['password']))
       {
         
-        $host = "localhost";
-        $dbusername = "root";
-        $dbname = "project_uas";
-        $password ="";
-        
+        include'DBconnect.php';
         $db = mysqli_connect($host,$dbusername,$password,$dbname);
         if (! mysqli_real_escape_string($db, $_POST['password']) && ! mysqli_real_escape_string($db, $_POST['username']) )
         {
