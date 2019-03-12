@@ -70,48 +70,32 @@
 
 				if($simpan && $simpan2)
 				{
-					echo "<script>window.location.href='login_page.php';</script>";
+					// echo "<script>window.location.href='login_page.php';</script>";
+					echo "<script>
+						$(document).ready(function() {
+							swal({ 
+								title: 'Congratulation',
+								text: 'Your registrasion is success',
+								type: 'notif' 
+								}).then(function() {
+								
+								window.location.href = 'login_page.php';
+								})});
+						</script>";
 				}
 				else 
 				{
-					echo "Error";
+					// echo "Error";
+					echo "<script>
+						swal({
+							icon: \"error\",
+							title: \"Error, username has been used by someone else\"
+						});
+					</script>";
 				}
 			}
 	}
 	?>
-	<!-- <div class = "container" style="width:50%; padding: 10px; margin : 0 auto;">
-		<i><h4 style = "padding : 10px;">Registrasi User Baru</h4></i>
-		<form action = 'SignUp.php' method="POST">
-			<div class = "form-group">
-				<label for="namadepan">Nama Depan :</label>
-				<input type = "text" class="form-control" name = 'namadepan' required="true"> <br>
-			</div>
-			<div class = "form-group">
-				<label for="namabelakang">Nama Belakang :</label>
-				<input type = "text" class="form-control"  name = 'namabelakang'> <br>
-			</div>
-			
-			<div class = "form-group">
-				<label for="email">Email :</label> <br>
-				<input type = "email" class="form-control"  name = 'email' required="true"> <br>
-			</div>
-			<div class = "form-group">
-				<label for="jeniskelamin">Jenis Kelamin :</label> <br>
-				<input type = "radio"   name = 'jeniskelamin' value = 'LakiLaki'> Laki-Laki
-				<input type = "radio" 	name = 'jeniskelamin' value = 'Perempuan' required="true"> Perempuan
-			</div>
-			<div class = "form-group">
-				<label for="username">Username :</label> <br>
-				<input type = "text" class="form-control"  name = 'username' required="true"> <br>
-			</div>
-			<div class = "form-group">
-				<label for="password">Password :</label> <br>
-				<input type = "password" class="form-control"  name = 'password' required="true"> <br>
-			</div>
-				<input type="submit" class="btn btn-primary" value="Simpan" name = "Simpan">
-				<a href = "login_page.php" class="btn btn-default">cancel</a>
-		</form>
-	</div> -->
 
 	<div class="container">
     <div class="row">
