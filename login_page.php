@@ -61,7 +61,7 @@
                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                 <label class="custom-control-label" for="customCheck1">Remember password</label>
               </div>
-              <button class="btn btn-lg btn-info btn-block text-uppercase" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-info btn-block text-uppercase" type="submit" name = "sign">Sign in</button>
               <hr class="my-4">
               <h5 class="text-center">Belum Punya akun?</h5>
               <center><a href="SignUp.php"><span class="btn btn-primary glyphicon glyphicon-user">  Daftar Baru</span></a></center>
@@ -74,9 +74,8 @@
 
 
   <?php
-      if (isset($_POST['username']) && isset($_POST['password']))
+      if (isset($_POST['sign']))
       {
-        
         include'DBconnect.php';
         $db = mysqli_connect($host,$dbusername,$password,$dbname);
         if (! mysqli_real_escape_string($db, $_POST['password']) && ! mysqli_real_escape_string($db, $_POST['username']) )

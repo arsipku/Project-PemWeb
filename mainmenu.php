@@ -31,7 +31,7 @@
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	      	<li style="float:right"><a href="login_page.php">Logout</a></li>
-	        <li style="right"><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo "   " . $data[$_SESSION['index']]->getnamadepan();?></a></li>
+	        <li style="right"><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $data[$_SESSION['index']]->getnamadepan();?></a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -74,15 +74,56 @@
 	        <div class="col-sm-12">
 	          <div class="panel panel-default text-left">
 	            <div class="panel-body">
-	              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Nyinyir yuk.."></textarea>
-								<p></p>
-								<button class="btn btn-primary" style="float:right;">Post</button>
+	            	<form action="mainmenu.php"	method="POST">
+	            		<textarea name="comment" id = "comment" rows="5" cols="95"></textarea>
+			            <input type = "submit" name = "post" value="Post">
+			            
+	            	</form>     
 	            </div>
 	          </div>
 	        </div>
 	      </div>
+
+	      <?php  
+	      	//comment section
+	      	$query = "SELECT * FROM comment";
+        	$result = $db->query($query);
+        	$getusername = $data[$_SESSION['index']]->getusername();
+
+			foreach ($result as $row) {
+				# code...
+				echo "<div class='row'>";
+	        	echo "<div class='col-sm-3'>";
+	         	echo "<div class='well'>";
+	           	echo "<p>".$row['username']."</p>";
+	           	echo "<img src='bird.jpg' class='img-circle' height='55' width='55' alt='Avatar'>";
+	          	echo "</div>";
+	        	echo "</div>";
+	        	echo "<div class='col-sm-9'>";
+	          	echo "<div class='well'>";
+	            echo "<p>".$row['comment']."</p>";
+	          	echo "</div>";
+	        	echo "</div>";
+	      		echo "</div>";
+			}
+
+			if(isset($_POST['post']))
+	      	{
+	      		$comment = $_POST['comment'];
+	      		$post = mysqli_query($db,"INSERT INTO comment
+				 VALUES(
+				'$getusername',
+				'$comment',
+				CURRENT_TIMESTAMP
+				);");
+	      		if (!$post) {
+	      			# code...
+	      			echo("Error description: " . mysqli_error($db));
+	      		}
+	      	}
+	      ?>
 	      
-	      <div class="row">
+	      <!-- <div class="row">
 	        <div class="col-sm-3">
 	          <div class="well">
 	           <p>John</p>
@@ -133,7 +174,7 @@
 	            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
 	          </div>
 	        </div>
-	      </div>     
+	      </div>   -->   
 	    </div>
 	    <div class="col-sm-2 well">
 	      <div class="thumbnail">
