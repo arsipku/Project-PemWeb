@@ -31,7 +31,7 @@
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	      	<li style="float:right"><a href="login_page.php">Logout</a></li>
-	        <li style="right"><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $data[$_SESSION['index']]->getnamadepan();?></a></li>
+	        <li style="right"><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo "   " . $data[$_SESSION['index']]->getnamadepan();?></a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -74,10 +74,9 @@
 	        <div class="col-sm-12">
 	          <div class="panel panel-default text-left">
 	            <div class="panel-body">
-	              <p contenteditable="true">Status: Feeling Blue</p>
-	              <button type="button" class="btn btn-default btn-sm">
-	                <span class="glyphicon glyphicon-thumbs-up"></span> Like
-	              </button>     
+	              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Nyinyir yuk.."></textarea>
+								<p></p>
+								<button class="btn btn-primary" style="float:right;">Post</button>
 	            </div>
 	          </div>
 	        </div>
