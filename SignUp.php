@@ -58,14 +58,21 @@
 				$profile_pic = "profil_bawaan.jpg";
 
 				$simpan2 = mysqli_query($db,"INSERT INTO data_user_lanjutan 
-				 VALUES(
+				 VALUES (
 				'$username',
 				'$profile_pic',
-				'',
-				'',
-				'',
-				'',
-				''
+				null,
+				null,
+				null,
+				null,
+				null
+				);");
+
+				$simpan3 = mysqli_query($db,"INSERT INTO chat 
+				 VALUES (
+				'$username',
+				null,
+				null
 				);");
 
 				if($simpan && $simpan2)
@@ -82,6 +89,14 @@
 								window.location.href = 'login_page.php';
 								})});
 						</script>";
+				}
+				else if (!$simpan2)
+				{
+					echo("Error description: " . mysqli_error($db));
+				}
+				else if (!$simpan3)
+				{
+					echo("Error description: " . mysqli_error($db));
 				}
 				else 
 				{

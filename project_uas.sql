@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 28, 2019 at 10:51 AM
+-- Generation Time: Mar 13, 2019 at 12:52 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.20
 
@@ -30,9 +30,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `chat` (
   `username` varchar(50) NOT NULL,
-  `chat` varchar(200) NOT NULL,
-  `waktu` datetime(6) NOT NULL
+  `chat` varchar(200) DEFAULT NULL,
+  `waktu` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`username`, `chat`, `waktu`) VALUES
+('DBA', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -44,17 +51,10 @@ CREATE TABLE `data_user` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `nama_depan` varchar(50) NOT NULL,
-  `nama_belakang` varchar(50) NOT NULL,
+  `nama_belakang` varchar(50) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   `jenis_kelamin` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `data_user`
---
-
-INSERT INTO `data_user` (`username`, `password`, `nama_depan`, `nama_belakang`, `email`, `jenis_kelamin`) VALUES
-('DB_ADMIN', 'lapet', 'Ahsanul', 'Qalbi', 'ahsanulQalbi@gmail.com', 'LakiLaki');
 
 -- --------------------------------------------------------
 
@@ -65,11 +65,11 @@ INSERT INTO `data_user` (`username`, `password`, `nama_depan`, `nama_belakang`, 
 CREATE TABLE `data_user_lanjutan` (
   `username` varchar(50) NOT NULL,
   `profile_pic` varchar(50) NOT NULL,
-  `alamat` varchar(50) NOT NULL,
-  `motto` varchar(100) NOT NULL,
-  `tempat_lahir` varchar(50) NOT NULL,
-  `tanggal_lahir` varchar(50) NOT NULL,
-  `bio` varchar(200) NOT NULL
+  `alamat` varchar(300) DEFAULT NULL,
+  `motto` varchar(200) DEFAULT NULL,
+  `tempat_lahir` varchar(50) DEFAULT NULL,
+  `tanggal_lahir` date DEFAULT NULL,
+  `bio` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
