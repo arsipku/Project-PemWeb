@@ -3,9 +3,10 @@
 <head>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="updateProfil_hiasan.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<title>Database Mahasiswa</title>
 	<nav class="navbar navbar-default">
@@ -23,10 +24,10 @@
 		include 'DBconnect.php';
 	?>
 	<div class = "container">
-		<h4>Update profile </h4>
+		<!-- <h4>Update profile </h4> -->
 		<?php
-	  		$gambar = $datalanjutan[$_SESSION['index']]->getprofile_pic();
-	    	echo"<img src='assets/$gambar' class='img-circle' height='65' width='65' alt='Avatar'>";
+	  		// $gambar = $datalanjutan[$_SESSION['index']]->getprofile_pic();
+	    	// echo"<img src='assets/$gambar' class='img-circle' height='65' width='65' alt='Avatar'>";
 	    	if(isset($_POST['submit'])) 
 	    	{
 
@@ -123,7 +124,7 @@
 				
 			}
 	    ?>
-		<form id="formUpdate" action = 'update_profile.php' method = 'POST' enctype='multipart/form-data'>
+		<!-- <form id="formUpdate" action = 'update_profile.php' method = 'POST' enctype='multipart/form-data'>
 			<div class = "form-group">
 				<span style = "display: inline;">perbarui Photo anda :</span> 
 				<input  type ='file' name='txtFile' >
@@ -160,6 +161,82 @@
 			</div>
 			<input type='submit' value= 'Perbarui' class="btn btn-primary" name = 'submit'>
 		</form>
-	</div>
+	</div> -->
+
+	<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-4 bg-image"></div>
+    <div class="col-md-8 col-lg-8">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4">Update Profile</h3>
+              <form>
+                <!-- <div class="form-label-group">
+                  <input type="text" id="updateNamaDepan" class="form-control" placeholder="Nama Depan" autofocus>
+                  <label for="updateNamaDepan">Nama Depan</label>
+                </div>
+
+								<div class="form-label-group">
+                  <input type="text" id="updateNamaBelakang" class="form-control" placeholder="Nama Belakang">
+                  <label for="updateNamaBelakang">Nama Belakang</label>
+                </div> -->
+								<div class="form-row">
+                <div class="col">
+                    <!-- First name -->
+                    <div class="form-label-group">
+                        <input type="text" id="materialRegisterFormFirstName" class="form-control" placeholder="Nama Depan">
+                        <label for="materialRegisterFormFirstName">Nama Depan</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- Last name -->
+                    <div class="form-label-group">
+                        <input type="email" id="materialRegisterFormLastName" class="form-control" placeholder="Nama Belakang">
+                        <label for="materialRegisterFormLastName">Nama Belakang</label>
+                    </div>
+                </div>
+            </div>
+
+								<div class="form-label-group">
+                  <input type="text" id="updateAlamat" class="form-control" placeholder="Alamat">
+                  <label for="updateAlamat">Alamat</label>
+                </div>
+
+								<div class="form-label-group">
+                  <input type="text" id="updateMotto" class="form-control" placeholder="Motto">
+                  <label for="updateMotto">Motto</label>
+                </div>
+
+								<div class="form-label-group">
+                  <input type="text" id="updateTempatLahir" class="form-control" placeholder="TempatLahir">
+                  <label for="updateTempatLahir">Tempat Lahir</label>
+                </div>
+
+								<div class="form-label-group">
+                  <input type="date" id="updateTanggalLahir" class="form-control" placeholder="TanggalLahir">
+                  <label for="updateTanggalLahir">Tanggal Lahir</label>
+                </div>
+
+								<div class="form-label-group">
+                  <input type="text" id="updateBiografiSekilas" class="form-control" placeholder="BiografiSekilas">
+                  <label for="updateBiogradiSekilas">Biografi Sekilas</label>
+									<textarea name="biografiSekilas" id="updateBiografiSekilas" class="form-control" cols="60" rows="5"></textarea>
+                </div>
+
+              
+                <!-- <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button> -->
+                <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="Update" value="Update Profil">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </body>
 </html>
