@@ -31,6 +31,7 @@
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	      	<li style="float:right"><a href="login_page.php">Logout</a></li>
+
 	        <li style="right"><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $data[$_SESSION['index']]->getnamadepan();?></a></li>
 	      </ul>
 	    </div>
@@ -76,17 +77,15 @@
 	            <div class="panel-body">
 	            	<form action="mainmenu.php"	method="POST">
 	            		<textarea name="comment" id = "comment" rows="5" cols="95"></textarea>
-			            <input type = "submit" name = "post" value="Post">
-			            
+			            <input type = "submit" name = "post" value="Post"> 
 	            	</form>     
 	            </div>
 	          </div>
 	        </div>
 	      </div>
-
 	      <?php  
 	      	//comment section
-	      	$query = "SELECT * FROM comment";
+	      	$query = "SELECT a.username as username, b.profile_pic as profile_pic, a.time as time, a.comment as comment, c.nama_depan as nama_depan, c.nama_belakang as nama_belakang FROM comment a, data_user_lanjutan b, data_user c where a.username = b.username and a.username = c.username ORDER BY 3 desc";
         	$result = $db->query($query);
         	$getusername = $data[$_SESSION['index']]->getusername();
 
@@ -95,13 +94,15 @@
 				echo "<div class='row'>";
 	        	echo "<div class='col-sm-3'>";
 	         	echo "<div class='well'>";
-	           	echo "<p>".$row['username']."</p>";
-	           	echo "<img src='bird.jpg' class='img-circle' height='55' width='55' alt='Avatar'>";
+	           	echo "<p>".$row['nama_depan']." ".$row['nama_belakang']."</p>";
+	           	$name = $row['profile_pic'];
+	           	echo "<img src= \"assets/$name\" class='img-circle' height='55' width='55' alt='Avatar'>";
 	          	echo "</div>";
 	        	echo "</div>";
 	        	echo "<div class='col-sm-9'>";
 	          	echo "<div class='well'>";
 	            echo "<p>".$row['comment']."</p>";
+	            echo "<p>".$row['time']."</p>";
 	          	echo "</div>";
 	        	echo "</div>";
 	      		echo "</div>";
@@ -120,61 +121,12 @@
 	      			# code...
 	      			echo("Error description: " . mysqli_error($db));
 	      		}
+	      		else
+	      		{
+	      			 echo "<script>window.location.href='mainmenu.php';</script>";
+	      		}
 	      	}
-	      ?>
-	      
-	      <!-- <div class="row">
-	        <div class="col-sm-3">
-	          <div class="well">
-	           <p>John</p>
-	           <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-	          </div>
-	        </div>
-	        <div class="col-sm-9">
-	          <div class="well">
-	            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-	          </div>
-	        </div>
-	      </div>
-	      <div class="row">
-	        <div class="col-sm-3">
-	          <div class="well">
-	           <p>Bo</p>
-	           <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-	          </div>
-	        </div>
-	        <div class="col-sm-9">
-	          <div class="well">
-	            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-	          </div>
-	        </div>
-	      </div>
-	      <div class="row">
-	        <div class="col-sm-3">
-	          <div class="well">
-	           <p>Jane</p>
-	           <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-	          </div>
-	        </div>
-	        <div class="col-sm-9">
-	          <div class="well">
-	            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-	          </div>
-	        </div>
-	      </div>
-	      <div class="row">
-	        <div class="col-sm-3">
-	          <div class="well">
-	           <p>Anja</p>
-	           <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-	          </div>
-	        </div>
-	        <div class="col-sm-9">
-	          <div class="well">
-	            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-	          </div>
-	        </div>
-	      </div>   -->   
+	      ?>  
 	    </div>
 	    <div class="col-sm-2 well">
 	      <div class="thumbnail">
@@ -183,17 +135,24 @@
 	        <p><strong>Paris</strong></p>
 	        <p>Fri. 27 November 2015</p>
 	        <button class="btn btn-primary">Info</button>
-	      </div>      
-	      <div class="well">
-	        <p>ADS</p>
-	      </div>
-	      <div class="well">
-	        <p>ADS</p>
-	      </div>
+	      </div>    
+	      <?php
+	      	$queryteman = "SELECT a.nama_depan as nama_depan, a.nama_belakang as nama_belakang, b.profile_pic as profile_pic from data_user a, data_user_lanjutan b where a.username = b.username and a.username != '$getusername'";
+	      	$resultteman = $db->query($queryteman);
+	      	foreach ($resultteman as $row)
+	      	{
+	      		echo" <div class=\"well\">";
+	      		$name = $row['profile_pic'];
+			    echo "<p>".$row['nama_depan']." ".$row['nama_belakang']."</p>";
+			    echo "<img src= \"assets/$name\" class='img-circle' height='55' width='55' alt='Avatar'>";
+			    echo "</div>";
+	      	}
+	      ?>  
+	     
 	    </div>
 	  </div>
 	</div>
-
+	
 	<footer class="container-fluid text-center">
 	  <p>Footer Text</p>
 	</footer>

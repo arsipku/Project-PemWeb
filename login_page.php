@@ -76,6 +76,7 @@
   <?php
       if (isset($_POST['sign']))
       {
+        
         include'DBconnect.php';
         $db = mysqli_connect($host,$dbusername,$password,$dbname);
         if (! mysqli_real_escape_string($db, $_POST['password']) && ! mysqli_real_escape_string($db, $_POST['username']) )

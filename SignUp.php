@@ -90,10 +90,10 @@
 								})});
 						</script>";
 				}
-				// else if (!$simpan2)
-				// {
-				// 	echo("Error description: " . mysqli_error($db));
-				// }
+				else if (!$simpan2)
+				{
+					echo("Error description: " . mysqli_error($db));
+				}
 				// else if (!$simpan3)
 				// {
 				// 	echo("Error description: " . mysqli_error($db));

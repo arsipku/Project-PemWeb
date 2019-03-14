@@ -154,6 +154,86 @@
 			</div>
 			<input type='submit' value= 'Perbarui' class="btn btn-primary" name = 'submit'>
 		</form>
+<<<<<<< HEAD
 	</div>
+=======
+	</div> -->
+
+	<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-4 bg-image"></div>
+    <div class="col-md-8 col-lg-8">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4">Update Profile</h3>
+              <form>
+                <!-- <div class="form-label-group">
+                  <input type="text" id="updateNamaDepan" class="form-control" placeholder="Nama Depan" autofocus>
+                  <label for="updateNamaDepan">Nama Depan</label>
+                </div>
+
+								<div class="form-label-group">
+                  <input type="text" id="updateNamaBelakang" class="form-control" placeholder="Nama Belakang">
+                  <label for="updateNamaBelakang">Nama Belakang</label>
+                </div> -->
+								<div class="form-row">
+                <div class="col">
+                    <!-- First name -->
+                    <div class="form-label-group">
+                        <input type="text" id="materialRegisterFormFirstName" class="form-control" placeholder="Nama Depan">
+                        <label for="materialRegisterFormFirstName">Nama Depan</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- Last name -->
+                    <div class="form-label-group">
+                        <input type="email" id="materialRegisterFormLastName" class="form-control" placeholder="Nama Belakang">
+                        <label for="materialRegisterFormLastName">Nama Belakang</label>
+                    </div>
+                </div>
+            </div>
+
+								<div class="form-label-group">
+                  <input type="text" id="updateAlamat" class="form-control" placeholder="Alamat">
+                  <label for="updateAlamat">Alamat</label>
+                </div>
+
+								<div class="form-label-group">
+                  <input type="text" id="updateMotto" class="form-control" placeholder="Motto">
+                  <label for="updateMotto">Motto</label>
+                </div>
+
+								<div class="form-label-group">
+                  <input type="text" id="updateTempatLahir" class="form-control" placeholder="TempatLahir">
+                  <label for="updateTempatLahir">Tempat Lahir</label>
+                </div>
+
+								<div class="form-label-group">
+                  <input type="date" id="updateTanggalLahir" class="form-control" placeholder="TanggalLahir">
+                  <label for="updateTanggalLahir">Tanggal Lahir</label>
+                </div>
+
+								<div class="form-label-group">
+                  <input type="text" id="updateBiografiSekilas" class="form-control" placeholder="BiografiSekilas">
+                  <label for="updateBiogradiSekilas">Biografi Sekilas</label>
+									<textarea name="biografiSekilas" id="updateBiografiSekilas" class="form-control" cols="60" rows="5"></textarea>
+                </div>
+
+              
+                <!-- <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button> -->
+                <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="Update" value="Update Profil">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+>>>>>>> parent of 4bd6f2b... update profil
 </body>
 </html>
