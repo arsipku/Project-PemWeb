@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<title>Database Mahasiswa</title>
 	<nav class="navbar navbar-default">
 		<div class= "container-fluid">
@@ -28,6 +29,7 @@
 	    	echo"<img src='assets/$gambar' class='img-circle' height='65' width='65' alt='Avatar'>";
 	    	if(isset($_POST['submit'])) 
 	    	{
+
 	    		$profile = $_FILES['txtFile'];
 	    		$namadepan = $_POST['edtnamadepan'];
 	    		$namabelakang = $_POST['edtnamabelakang'];
@@ -38,6 +40,9 @@
 	    		$tgl_lahir = $_POST['tgl_lahir'];
 	    		$bio = $_POST['bio'];
 				//print_r($_FILES['txtFile']);
+		
+
+
 				if (!empty($profile))
 				{
 					$folderSimpan = "assets/";
@@ -114,10 +119,11 @@
 						echo "error";
 					}
 				}
-				echo"<script>window.location.href='mainmenu.php';</script>";
+				 echo"<script>window.location.href='mainmenu.php';</script>";
+				
 			}
 	    ?>
-		<form action = 'update_profile.php' method = 'POST' enctype='multipart/form-data'>
+		<form id="formUpdate" action = 'update_profile.php' method = 'POST' enctype='multipart/form-data'>
 			<div class = "form-group">
 				<span style = "display: inline;">perbarui Photo anda :</span> 
 				<input  type ='file' name='txtFile' >
