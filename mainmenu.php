@@ -103,6 +103,7 @@
 	          	echo "<div class='well'>";
 	            echo "<p>".$row['comment']."</p>";
 	            echo "<p>".$row['time']."</p>";
+	            echo "<a> see full post comment </a>";
 	          	echo "</div>";
 	        	echo "</div>";
 	      		echo "</div>";

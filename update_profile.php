@@ -37,89 +37,89 @@
 				$tmp_lahir = $_POST['tmp_lahir'];
 				$tgl_lahir = $_POST['tgl_lahir'];
 				$bio = $_POST['bio'];
-			//print_r($_FILES['txtFile']);
-			if (!empty($profile))
-			{
-				$folderSimpan = "assets/";
-				$nama = basename($_FILES['txtFile']['name']);
-				$namaFile = $folderSimpan . basename($_FILES['txtFile']['name']);
-				
-				$prosesUpload = move_uploaded_file($_FILES['txtFile']['tmp_name'], $namaFile);
-				if($prosesUpload) {
-					$edit = mysqli_query($db,"UPDATE data_user_lanjutan
-						set profile_pic = '$nama'
-						where username = '$username'");
+				//print_r($_FILES['txtFile']);
+				if (!empty($profile))
+				{
+					$folderSimpan = "assets/";
+					$nama = basename($_FILES['txtFile']['name']);
+					$namaFile = $folderSimpan . basename($_FILES['txtFile']['name']);
+					
+					$prosesUpload = move_uploaded_file($_FILES['txtFile']['tmp_name'], $namaFile);
+					if($prosesUpload) {
+						$edit = mysqli_query($db,"UPDATE data_user_lanjutan
+							set profile_pic = '$nama'
+							where username = '$username'");
 
-				} 
-			}
-			if (!empty($namadepan))
-			{
-				$edit = mysqli_query($db,"UPDATE data_user
-						set nama_depan = '$namadepan'
-						where username = '$username'");
-			}
-			if (!empty($namabelakang))
-			{
-				$edit = mysqli_query($db,"UPDATE data_user
-						set nama_belakang = '$namabelakang'
-						where username = '$username'");
-			}
-			if (!empty($alamat))
-			{
-				$edit = mysqli_query($db,"UPDATE data_user_lanjutan
-						set alamat = '$alamat'
-						where username = '$username'");
-				if (!$edit)
-				{
-					echo "error";
+					} 
 				}
-			}
-			if (!empty($motto))
-			{
-				$edit = mysqli_query($db,"UPDATE data_user_lanjutan
-						set motto = '$motto'
-						where username = '$username'");
-				if (!$edit)
+				if (!empty($namadepan))
 				{
-					echo "error";
+					$edit = mysqli_query($db,"UPDATE data_user
+							set nama_depan = '$namadepan'
+							where username = '$username'");
 				}
-			}
-			if (!empty($tmp_lahir))
-			{
-				$edit = mysqli_query($db,"UPDATE data_user_lanjutan
-						set tempat_lahir = '$tmp_lahir'
-						where username = '$username'");
-				if (!$edit)
+				if (!empty($namabelakang))
 				{
-					echo "error";
+					$edit = mysqli_query($db,"UPDATE data_user
+							set nama_belakang = '$namabelakang'
+							where username = '$username'");
 				}
-			}
-			if (!empty($tgl_lahir))
-			{
-				$edit = mysqli_query($db,"UPDATE data_user_lanjutan
-						set tanggal_lahir = '$tgl_lahir'
-						where username = '$username'");
-				if (!$edit)
+				if (!empty($alamat))
 				{
-					echo "error";
+					$edit = mysqli_query($db,"UPDATE data_user_lanjutan
+							set alamat = '$alamat'
+							where username = '$username'");
+					if (!$edit)
+					{
+						echo "error";
+					}
 				}
-			}
-			if (!empty($bio))
-			{
-				$edit = mysqli_query($db,"UPDATE data_user_lanjutan
-						set bio = '$bio'
-						where username = '$username'");
-				if (!$edit)
+				if (!empty($motto))
 				{
-					echo "error";
+					$edit = mysqli_query($db,"UPDATE data_user_lanjutan
+							set motto = '$motto'
+							where username = '$username'");
+					if (!$edit)
+					{
+						echo "error";
+					}
 				}
-			}
-			echo"<script>window.location.href='mainmenu.php';</script>";
+				if (!empty($tmp_lahir))
+				{
+					$edit = mysqli_query($db,"UPDATE data_user_lanjutan
+							set tempat_lahir = '$tmp_lahir'
+							where username = '$username'");
+					if (!$edit)
+					{
+						echo "error";
+					}
+				}
+				if (!empty($tgl_lahir))
+				{
+					$edit = mysqli_query($db,"UPDATE data_user_lanjutan
+							set tanggal_lahir = '$tgl_lahir'
+							where username = '$username'");
+					if (!$edit)
+					{
+						echo "error";
+					}
+				}
+				if (!empty($bio))
+				{
+					$edit = mysqli_query($db,"UPDATE data_user_lanjutan
+							set bio = '$bio'
+							where username = '$username'");
+					if (!$edit)
+					{
+						echo "error";
+					}
+				}
+				echo"<script>window.location.href='mainmenu.php';</script>";
 			}
 		?>
 
-		<form action = 'update_profile.php' method = 'POST' enctype='multipart/form-data'>
-
+		
+			<form action = 'update_profile.php' method = 'POST' enctype='multipart/form-data'>
 			<div class="container">
 				<h1>Edit Profile</h1>
 				<hr>
@@ -129,9 +129,9 @@
 						<div class="text-center">
 						<?php echo"<img src='assets/$gambar' class='img-circle' height='120' width='120' alt='Avatar'>"; ?>
 
-							<h6>Upload a different photo...</h6>
+							<h6>Upload a different photo..</h6>
 							
-							<input type="file" class="form-control">
+							<input type="file" class="form-control" name = "txtFile">
 						</div>
 					</div>
 					
@@ -144,7 +144,7 @@
 						</div>
 						<h3>Personal info</h3>
 						
-						<form class="form-horizontal" role="form">
+						
 							<div class="form-group">
 								<label class="col-lg-3 control-label">First name:</label>
 								<div class="col-lg-8">
@@ -197,17 +197,16 @@
 							<div class="form-group">
 								<label class="col-md-3 control-label"></label>
 								<div class="col-md-8">
-									<input type="button" class="btn btn-primary" value="Save Changes">
-									<span></span>
-									<input type="reset" class="btn btn-default" value="Cancel">
+									<input type="submit" class="btn btn-secondary" value="Save Changes" name = "submit">
+									<button  class="btn btn-secondary" value="Save" ><a href = "mainmenu.php">cancel</a></button>
+									
 								</div>
 							</div>
 
-						</form>
+						
 					</div>
 				</div>
 			</div>
-			<hr>
 		</form>
 	</body>
 </html>
