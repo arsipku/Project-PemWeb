@@ -12,7 +12,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-		
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 		<title>Database Mahasiswa</title>
 
@@ -116,18 +116,32 @@
 						echo "error";
 					}
 				}
-				echo"<script>window.location.href='mainmenu.php';</script>";
+				echo "<script>
+						$(document).ready(function() {
+							swal({ 
+								title: 'Congratulation',
+								text: 'Your Profile has been updated!',
+								type: 'notif',
+								icon: 'success',
+								}).then(function() {
+								
+									window.location.href = 'mainmenu.php';
+								})});
+						</script>";
+
+				
+
 			}
 		?>
 
 		
 			<form action = 'update_profile.php' method = 'POST' enctype='multipart/form-data'>
-			<div class="container">
+			<div class="container abu-abu">
 				
-				<div class="row">
+				<div class="row abu-abu">
 					<!-- left column -->
-					<div class="col-md-3">
-						<div class="text-center">
+					<div class="col-md-3 abu-abu">
+						<div class="text-center abu-abu">
 						<?php echo"<img src='assets/$gambar' class='img-circle' height='120' width='120' alt='Avatar'>"; ?>
 
 							<h6>Upload a different photo..</h6>
@@ -137,62 +151,62 @@
 					</div>
 					
 					<!-- edit form column -->
-					<div class="col-md-9 personal-info">
+					<div class="col-md-9 personal-info abu-abu">
 					<h1>Edit Profile</h1>
 						<h3>Personal info</h3>
 						
-							<div class="form-group">
+							<div class="form-group abu-abu">
 								<label class="col-lg-3 control-label">First name:</label>
-								<div class="col-lg-8">
+								<div class="col-lg-8 abu-abu">
 									<input id = "edtnamadepan" name = 'edtnamadepan' class="form-control" type="text" value="">
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group abu-abu">
 								<label class="col-lg-3 control-label">Last name:</label>
-								<div class="col-lg-8">
+								<div class="col-lg-8 abu-abu">
 									<input id = "edtnamabelakang" name = 'edtnamabelakang' class="form-control" type="text" value="">
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group abu-abu">
 								<label class="col-lg-3 control-label">Address:</label>
-								<div class="col-lg-8">
+								<div class="col-lg-8 abu-abu">
 									<textarea class="form-control" row="3" name='alamat' id = 'alamat'></textarea>
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group abu-abu">
 								<label class="col-lg-3 control-label">Motto:</label>
-								<div class="col-lg-8">
+								<div class="col-lg-8 abu-abu">
 									<input id = "motto" class="form-control" type="text" name = 'motto' value="">
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group abu-abu">
 								<label class="col-md-3 control-label">Place of Birth:</label>
-								<div class="col-md-8">
+								<div class="col-md-8 abu-abu">
 									<input id = "tmp_lahir" name = 'tmp_lahir' class="form-control" type="text" value="">
 								</div>
 
 							</div>
-							<div class="form-group">
+							<div class="form-group abu-abu">
 								<label class="col-md-3 control-label">Date of Birth:</label>
-								<div class="col-md-8">
+								<div class="col-md-8 abu-abu">
 									<input id = "tgl_lahir" class="form-control" name = 'tgl_lahir' type="date" value="">
 								</div>
 
 							</div>
-							<div class="form-group">
+							<div class="form-group abu-abu">
 								<label class="col-md-3 control-label">Biography:</label>
-								<div class="col-md-8">
+								<div class="col-md-8 abu-abu">
 								<textarea class="form-control" row="3" name='bio' id = 'bio'></textarea>
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group abu-abu">
 								<label class="col-md-3 control-label"></label>
-								<div class="col-md-8">
+								<div class="col-md-8 abu-abu">
 									<input type="submit" class="btn btn-primary" value="Save" name = "submit">
 									
 						
