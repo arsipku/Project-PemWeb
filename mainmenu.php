@@ -83,12 +83,10 @@
 	          </div>
 	        </div>
 	      </div>
-	      <?php  
-	      	//comment section
-	      	$query = "SELECT a.username as username, b.profile_pic as profile_pic, a.time as time, a.comment as comment, c.nama_depan as nama_depan, c.nama_belakang as nama_belakang FROM comment a, data_user_lanjutan b, data_user c where a.username = b.username and a.username = c.username ORDER BY 3 desc";
+	      <?php 
+	      	$query = "SELECT a.id_comment as id_comment, a.username as username, b.profile_pic as profile_pic, a.time as time, a.comment as comment, c.nama_depan as nama_depan, c.nama_belakang as nama_belakang FROM comment a, data_user_lanjutan b, data_user c where a.username = b.username and a.username = c.username ORDER BY 4 desc";
         	$result = $db->query($query);
         	$getusername = $data[$_SESSION['index']]->getusername();
-
 			foreach ($result as $row) {
 				# code...
 				echo "<div class='row'>";
@@ -103,17 +101,17 @@
 	          	echo "<div class='well'>";
 	            echo "<p>".$row['comment']."</p>";
 	            echo "<p>".$row['time']."</p>";
-							echo "<a href=\"Comment_detail.php\"> See Full Post Comment </a>";
-						
+	            $value = $row['id_comment'];
+
+	            echo "<form action = \"Comment_detail.php\" method = 'POST'>";
+					echo "<input type = \"hidden\" value = '$value' name = 'id_comment' >";
+					echo "<input type = \"submit\" name = \"submit\" value = \"Add Comment\">";
+				echo "</form>";
+
 	          	echo "</div>";
 	        	echo "</div>";
 	      		echo "</div>";
 			}
-
-			<form action = "Comment_detail.php">
-					<input type = "hidden" value = "$row['id']" name = 'id_comment' >
-					<sub
-			</form>
 
 			if(isset($_POST['post']))
 	      	{
@@ -122,7 +120,8 @@
 				 VALUES(
 				'$getusername',
 				'$comment',
-				CURRENT_TIMESTAMP
+				CURRENT_TIMESTAMP,
+				NULL
 				);");
 	      		if (!$post) {
 	      			# code...
