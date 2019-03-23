@@ -197,8 +197,9 @@
 							<div class="form-group">
 								<label class="col-md-3 control-label"></label>
 								<div class="col-md-8">
-									<input type="submit" class="btn btn-secondary" value="Save Changes" name = "submit">
-									<button  class="btn btn-secondary" value="Save" ><a href = "mainmenu.php">cancel</a></button>
+									<!--<input type="submit" class="btn btn-primary" value="Save Changes" name = "submit">-->
+									<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Submit</a>
+									<a href="mainmenu.php" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Cancel</a>
 									
 								</div>
 							</div>
