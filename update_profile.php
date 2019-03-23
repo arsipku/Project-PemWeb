@@ -6,12 +6,14 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="updateProfil_hiasan.css">
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 		
+
 		<title>Database Mahasiswa</title>
 
 	</head>
@@ -121,8 +123,7 @@
 		
 			<form action = 'update_profile.php' method = 'POST' enctype='multipart/form-data'>
 			<div class="container">
-				<h1>Edit Profile</h1>
-				<hr>
+				
 				<div class="row">
 					<!-- left column -->
 					<div class="col-md-3">
@@ -137,13 +138,8 @@
 					
 					<!-- edit form column -->
 					<div class="col-md-9 personal-info">
-						<div class="alert alert-info alert-dismissable">
-							<a class="panel-close close" data-dismiss="alert">×</a> 
-							<i class="fa fa-coffee"></i>
-							This is an <strong>.alert</strong>. Use this to show important messages to the user. <!--pake buat alert "edit profile success" atau "nothing was changed"-->
-						</div>
+					<h1>Edit Profile</h1>
 						<h3>Personal info</h3>
-						
 						
 							<div class="form-group">
 								<label class="col-lg-3 control-label">First name:</label>
@@ -197,15 +193,13 @@
 							<div class="form-group">
 								<label class="col-md-3 control-label"></label>
 								<div class="col-md-8">
-									<input type="submit" class="btn btn-primary" value="Save Changes" name = "submit">
+									<input type="submit" class="btn btn-primary" value="Save" name = "submit">
 									
 						
 									<a href="mainmenu.php" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Cancel</a>
 									
 								</div>
-							</div>
-
-						
+							</div>	
 					</div>
 				</div>
 			</div>
