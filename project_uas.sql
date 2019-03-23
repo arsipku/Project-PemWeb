@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 23 Mar 2019 pada 07.42
+-- Waktu pembuatan: 23 Mar 2019 pada 13.20
 -- Versi server: 5.7.19
 -- Versi PHP: 7.1.20
 
@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `project_uas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `add_comment`
+--
+
+CREATE TABLE `add_comment` (
+  `id_add` int(10) NOT NULL,
+  `content` varchar(100) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_comment` int(10) NOT NULL,
+  `username` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `add_comment`
+--
+
+INSERT INTO `add_comment` (`id_add`, `content`, `time`, `id_comment`, `username`) VALUES
+(3, 'asasas', '2019-03-23 11:15:25', 12, 'l'),
+(4, 'sdaddgfdhdgffddbfsfdserfg', '2019-03-23 11:26:28', 12, 'l'),
+(5, 'lapet', '2019-03-23 11:35:55', 13, 'l'),
+(6, 'asasasasasasdczxasdftrhgftyuikjhtgfjbfcvbnjytre', '2019-03-23 11:40:26', 13, 'l');
 
 -- --------------------------------------------------------
 
@@ -49,7 +73,10 @@ INSERT INTO `comment` (`username`, `comment`, `time`, `id_comment`) VALUES
 ('Sasuke', 'joiajoij', '2019-03-15 01:00:03', 7),
 ('Sasuke', 'mata lu', '2019-03-15 07:45:54', 8),
 ('rndrew', 'jgosjgoij', '2019-03-23 07:01:15', 9),
-('l', '', '2019-03-23 07:03:34', 10);
+('l', '', '2019-03-23 07:03:34', 10),
+('l', 'asasa', '2019-03-23 08:38:39', 11),
+('l', 'ASAAS', '2019-03-23 08:38:45', 12),
+('l', 'YEHEX, YEHDEC, ', '2019-03-23 08:39:51', 13);
 
 -- --------------------------------------------------------
 
@@ -109,6 +136,12 @@ INSERT INTO `data_user_lanjutan` (`username`, `profile_pic`, `alamat`, `motto`, 
 --
 
 --
+-- Indeks untuk tabel `add_comment`
+--
+ALTER TABLE `add_comment`
+  ADD PRIMARY KEY (`id_add`);
+
+--
 -- Indeks untuk tabel `comment`
 --
 ALTER TABLE `comment`
@@ -131,10 +164,16 @@ ALTER TABLE `data_user_lanjutan`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `add_comment`
+--
+ALTER TABLE `add_comment`
+  MODIFY `id_add` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT untuk tabel `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id_comment` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_comment` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
