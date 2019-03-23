@@ -76,7 +76,7 @@
 	          <div class="panel panel-default text-left">
 	            <div class="panel-body">
 	            	<form action="mainmenu.php"	method="POST">
-	            		<textarea name="comment" id = "comment" rows="5" cols="95"></textarea>
+	            		<textarea name="comment" id = "comment" rows="5" cols="89"></textarea>
 			            <input type = "submit" name = "post" value="Post"> 
 	            	</form>     
 	            </div>
@@ -103,11 +103,17 @@
 	          	echo "<div class='well'>";
 	            echo "<p>".$row['comment']."</p>";
 	            echo "<p>".$row['time']."</p>";
-	            echo "<a> see full post comment </a>";
+							echo "<a href=\"Comment_detail.php\"> See Full Post Comment </a>";
+						
 	          	echo "</div>";
 	        	echo "</div>";
 	      		echo "</div>";
 			}
+
+			<form action = "Comment_detail.php">
+					<input type = "hidden" value = "$row['id']" name = 'id_comment' >
+					<sub
+			</form>
 
 			if(isset($_POST['post']))
 	      	{

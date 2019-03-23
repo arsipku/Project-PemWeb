@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 13, 2019 at 12:52 AM
--- Server version: 5.7.19
--- PHP Version: 7.1.20
+-- Waktu pembuatan: 23 Mar 2019 pada 07.42
+-- Versi server: 5.7.19
+-- Versi PHP: 7.1.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,26 +25,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chat`
+-- Struktur dari tabel `comment`
 --
 
-CREATE TABLE `chat` (
-  `username` varchar(50) NOT NULL,
-  `chat` varchar(200) DEFAULT NULL,
-  `waktu` datetime(6) DEFAULT NULL
+CREATE TABLE `comment` (
+  `username` varchar(100) DEFAULT NULL,
+  `comment` varchar(500) DEFAULT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_comment` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `chat`
+-- Dumping data untuk tabel `comment`
 --
 
-INSERT INTO `chat` (`username`, `chat`, `waktu`) VALUES
-('DBA', NULL, NULL);
+INSERT INTO `comment` (`username`, `comment`, `time`, `id_comment`) VALUES
+('lala', 'lala', '2019-03-14 01:40:34', 1),
+('lala', '', '2019-03-14 01:41:46', 2),
+('lala', 'hihih', '2019-03-14 01:45:11', 3),
+('Sasuke', 'hai', '2019-03-14 02:01:48', 4),
+('Sasuke', 'lala', '2019-03-14 02:12:26', 5),
+('Sasuke', 'anjing', '2019-03-14 16:30:19', 6),
+('Sasuke', 'joiajoij', '2019-03-15 01:00:03', 7),
+('Sasuke', 'mata lu', '2019-03-15 07:45:54', 8),
+('rndrew', 'jgosjgoij', '2019-03-23 07:01:15', 9),
+('l', '', '2019-03-23 07:03:34', 10);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_user`
+-- Struktur dari tabel `data_user`
 --
 
 CREATE TABLE `data_user` (
@@ -56,10 +66,21 @@ CREATE TABLE `data_user` (
   `jenis_kelamin` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `data_user`
+--
+
+INSERT INTO `data_user` (`username`, `password`, `nama_depan`, `nama_belakang`, `email`, `jenis_kelamin`) VALUES
+('l', '2db95e8e1a9267b7a1188556b2013b33', 'lapet', 'combro', 'ahsanulqalbi@yahoo.co.id', 'LakiLaki'),
+('lala', 'd6581d542c7eaf801284f084478b5fcc', 'Madara', 'uchiha', 'ahsanulqalbi@gmail.com', 'LakiLaki'),
+('rndrew', 'a3622ca65e74a73963541ccce73fb02f', 'richard', 'andrew', 'richard.andrew811@gmail.com', 'LakiLaki'),
+('Sasuke', 'c36a3b04e10209374f2bc3a1f006d6bd', 'Sasuke', 'Uchiha', 'A@gmail.com', 'LakiLaki'),
+('sv', '743541121c12a113af807d1582c74bea', 'madara', 'dhdhd', 'ahsanulqalbi@gmail.com', 'LakiLaki');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_user_lanjutan`
+-- Struktur dari tabel `data_user_lanjutan`
 --
 
 CREATE TABLE `data_user_lanjutan` (
@@ -73,26 +94,47 @@ CREATE TABLE `data_user_lanjutan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data untuk tabel `data_user_lanjutan`
+--
+
+INSERT INTO `data_user_lanjutan` (`username`, `profile_pic`, `alamat`, `motto`, `tempat_lahir`, `tanggal_lahir`, `bio`) VALUES
+('l', 'profil_bawaan.jpg', NULL, NULL, NULL, NULL, NULL),
+('lala', 'profil_bawaan.jpg', NULL, NULL, NULL, NULL, NULL),
+('rndrew', 'profil_bawaan.jpg', NULL, NULL, NULL, NULL, NULL),
+('Sasuke', 'sasuke.png', NULL, NULL, NULL, NULL, NULL),
+('sv', 'hiler.jpg', 'Jerman', 'HeiLLLLL', 'jerman', '2018-05-14', 'Gatau');
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `chat`
+-- Indeks untuk tabel `comment`
 --
-ALTER TABLE `chat`
-  ADD PRIMARY KEY (`username`);
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id_comment`);
 
 --
--- Indexes for table `data_user`
+-- Indeks untuk tabel `data_user`
 --
 ALTER TABLE `data_user`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indexes for table `data_user_lanjutan`
+-- Indeks untuk tabel `data_user_lanjutan`
 --
 ALTER TABLE `data_user_lanjutan`
   ADD PRIMARY KEY (`username`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id_comment` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
