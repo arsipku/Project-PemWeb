@@ -11,9 +11,7 @@
 <body>
 	<?php
 		include 'DBconnect.php';
-		include 'data.php';
-		
-		
+		include 'data.php';		
 	?>
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
@@ -31,8 +29,7 @@
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	      	<li style="float:right"><a href="login_page.php">Logout</a></li>
-
-	        <li style="right"><a href="#"><span class="glyphicon glyphicon-user"></span><?php session_start(); echo $data[$_SESSION['index']]->getnamadepan();?></a></li>
+	        <li style="right"><a href="#"><span class="glyphicon glyphicon-user"></span><?php session_start(); echo "   " . $data[$_SESSION['index']]->getnamadepan();?></a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -41,7 +38,7 @@
 	<div class="container text-center">    
 	  <div class="row">
 	    <div class="col-sm-3 well">
-	      <div class="well">
+	      <div class="well" style="margin-top: 13px;">
 	      	<?php
 	      		$gambar = $datalanjutan[$_SESSION['index']]->getprofile_pic();
 	        	echo"<img src='assets/$gambar' class='img-circle' height='65' width='65' alt='Avatar'>";
@@ -49,35 +46,17 @@
 			<p><?php echo $data[$_SESSION['index']]->getnamadepan()." ".$data[$_SESSION['index']]->getnamabelakang();?></p>
 			<a href = "update_profile.php"> Update your profile </a>
 	      </div>
-	      <div class="well">
-	        <p><a href="#">Interests</a></p>
-	        <p>
-	          <span class="label label-default">News</span>
-	          <span class="label label-primary">W3Schools</span>
-	          <span class="label label-success">Labels</span>
-	          <span class="label label-info">Football</span>
-	          <span class="label label-warning">Gaming</span>
-	          <span class="label label-danger">Friends</span>
-	        </p>
-	      </div>
-	      <div class="alert alert-success fade in">
-	        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-	        <p><strong>Ey!</strong></p>
-	        People are looking at your profile. Find out who.
-	      </div>
-	      <p><a href="#">Link</a></p>
-	      <p><a href="#">Link</a></p>
-	      <p><a href="#">Link</a></p>
-	    </div>
-	    <div class="col-sm-7">
-	    
+			</div>
+			
+
+	    <div class="col-sm-7" >
 	      <div class="row">
 	        <div class="col-sm-12">
 	          <div class="panel panel-default text-left">
 	            <div class="panel-body">
 	            	<form action="mainmenu.php"	method="POST">
-	            		<textarea name="comment" id = "comment" rows="5" cols="89"></textarea>
-			            <input type = "submit" name = "post" value="Post">
+	            		<textarea name="comment" id = "comment" rows="5" cols="85"></textarea>
+			            <input class="btn btn-primary" style="float:right" type ="submit" name = "post" value="Post"> 
 	            	</form>     
 	            </div>
 	          </div>
@@ -91,19 +70,21 @@
 			foreach ($result as $row) {
 				# code...
 				echo "<div class='row'>";
-	        	echo "<div class='col-sm-3'>";
-	         	echo "<div class='well'>";
+					echo "<div class='col-sm-12'>";
+					echo "<div class='panel panel-default text-left'>";	          
+					echo "<div class='panel-body'>";
+	        	echo "<div class='col-sm-4' style='margin-top: 22px;'>";
+	         	echo "<div class='well' style='text-align: center';>";
 	           	echo "<p>".$row['nama_depan']." ".$row['nama_belakang']."</p>";
 	           	$name = $row['profile_pic'];
-	           	echo "<img src =\"assets/$name\" class='img-circle' height='55' width='55' alt='Avatar'>";
-	           	echo "</div>";
+	           	echo "<img src= \"assets/$name\" class='img-circle' height='55' width='55' alt='Avatar'>";
+	          	echo "</div>";
 	        	echo "</div>";
-	        	echo "<div class='col-sm-9'>";
-	          	echo "<div class='well'>";
+	        	echo "<div class='col-sm-8' style='margin-top:22px;'>";
+	          	echo "<div class='well' style='text-align: center'>";
 	            echo "<p>".$row['comment']."</p>";
 	            echo "<p>".$row['time']."</p>";
 	            $value = $row['id_comment'];
-	            
 
 	            echo "<form action = \"mainmenu.php\" method = 'POST'>";
 					echo "<input type = \"hidden\" value = '$value' name = 'id_comment' >";
@@ -111,9 +92,11 @@
 				echo "</form>";
 
 	          	echo "</div>";
-	        	echo "</div>";
+						echo "</div>";
+						echo "</div>";
 	      		echo "</div>";
-	      		++$indeks;
+						echo "</div>";
+	      		echo "</div>";
 			}
 
 			if(isset($_POST['post']))
@@ -141,25 +124,22 @@
 				$_SESSION['id'] = $var_id;
 				echo "<script>window.location.href='Comment_detail.php';</script>";
 				
-		}
-
-	      ?>
-	      <div></div>  
+			}
+	      ?>  
 	    </div>
 	    <div class="col-sm-2 well">
-	      <div class="thumbnail">
-	        <p>Upcoming Events:</p>
-	        <img src="paris.jpg" alt="Paris" width="400" height="300">
-	        <p><strong>Paris</strong></p>
-	        <p>Fri. 27 November 2015</p>
-	        <button class="btn btn-primary">Info</button>
-	      </div>    
+
 	      <?php
 	      	$queryteman = "SELECT a.username as username, a.nama_depan as nama_depan, a.nama_belakang as nama_belakang, b.profile_pic as profile_pic from data_user a, data_user_lanjutan b where a.username = b.username and a.username != '$getusername'";
 	      	$resultteman = $db->query($queryteman);
-
 	      	foreach ($resultteman as $row)
 	      	{
+	      		
+	    //   		$name = $row['profile_pic'];
+			  //   echo "<p>".$row['nama_depan']." ".$row['nama_belakang']."</p>";
+			  //   echo "<img src= \"assets/$name\" class='img-circle' height='55' width='55' alt='Avatar'>";
+					// echo "<br/>";
+					// echo "<br/>";
 	      		echo" <div class=\"well\">";
 	      		$name = $row['profile_pic'];
 			    echo "<p>".$row['nama_depan']." ".$row['nama_belakang']."</p>";	
@@ -172,8 +152,10 @@
 					echo "<input type = \"submit\" name = \"submitprofile\" value = \"Profile Details...\">";
 				echo "</form>";
 			    echo "</div>";
+					
 	      	}
 	      ?>  
+	     
 	    </div>
 	  </div>
 	</div>
