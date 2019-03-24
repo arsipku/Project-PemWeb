@@ -53,7 +53,7 @@
 				$username = $row ['username'];
 				$id_comment = $row ['id_comment'];
 			}
-				
+			$getusername = $data[$_SESSION['index']]->getusername();
 			$comment = $_POST['comment'];
 			$add = mysqli_query($db, "INSERT INTO add_comment 
 				VALUES(
@@ -61,7 +61,7 @@
 				'$comment',
 				CURRENT_TIMESTAMP,
 				'$id_comment',
-				'$username');");
+				'$getusername');");
 
 			if ($add) {
 				# code...
