@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="login_hiasan.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <div class="container">
     <header>
     <!-- <nav class="navbar navbar-default">
@@ -102,9 +102,13 @@
         {
           session_start();
           $_SESSION['index'] = $index;
-          echo "<script>window.location.href='mainmenu.php';</script>";
+          echo "<script>
+            window.location.href='mainmenu.php';
+          </script>";
         }
-        else echo "<script>alert(\"Username atau password salah\")</script>";
+        else echo "<script>
+          swal(\"Ooops!\", \"Wrong username or password\", \"error\");
+        </script>";
       }
   ?>
 </body>
