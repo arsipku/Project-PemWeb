@@ -165,8 +165,10 @@
 	  </div>
 	</div>
 	
-	<footer class="container-fluid text-center">
-	  <p>Footer Text</p>
+	<footer class="text-center navbar navbar-inverse">
+					<div style="color: white;">
+						<p>Copyright &copy; nyinyir</p>
+					</div>
 	</footer>
 
 </body>
