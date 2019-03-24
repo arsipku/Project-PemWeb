@@ -19,11 +19,8 @@
 			$query_show_profile = "SELECT a.username as username, a.nama_depan as nama_depan, a.nama_belakang as nama_belakang, a.email as email, a.jenis_kelamin as jenis_kelamin, b.profile_pic as profile_pic, b.alamat as alamat, b.motto as motto, b.tempat_lahir as tempat_lahir, b.tanggal_lahir as tanggal_lahir, b.bio as bio FROM data_user a, data_user_lanjutan b WHERE a.username = '$var_username' and a.username = b.username";
 
 			$query_show_post = "SELECT a.comment as comment FROM comment a, data_user b WHERE a.username = b.username and a.username = '$var_username'";
-
 			$result_profile = $db->query($query_show_profile);
-
 			$result_post = $db->query($query_show_post);
-
 			foreach ($result_profile as $row) {
 				# code...
 				$var_img = $row['profile_pic'];
