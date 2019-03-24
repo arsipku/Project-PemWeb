@@ -82,11 +82,89 @@
 			}
 		}
 
+		/**
+		 * 
+		 */
+		class comment
+		{
+			private $username; private $comment;
+			private $time; private $id_comment;
+			
+			function __construct($username, $comment, $time, $id_comment)
+			{
+				# code...
+				$this->username = $username;
+				$this->comment = $comment;
+				$this->time = $time;
+				$this->id_comment = $id_comment;
+			}
+
+			public function getusername(){
+				return $this->username;
+			}
+
+			public function getcomment(){
+				return $this->comment;
+			}
+
+			public function gettime(){
+				return $this->time;
+			}
+
+			public function getidcomment(){
+				return $this->id_comment;
+			}
+		}
+
+		class addcomment
+		{
+			private $id_add; private $username; private $content;
+			private $time; private $id_comment;
+			
+			function __construct($id_add, $username, $content, $time, $id_comment)
+			{
+				# code...
+				$this->id_add = $id_add;
+				$this->username = $username;
+				$this->content = $content;
+				$this->time = $time;
+				$this->id_comment = $id_comment;
+			}
+
+			public function getidadd(){
+				return $this->id_add;
+			}
+
+			public function getusername(){
+				return $this->username;
+			}
+
+			public function getcontent(){
+				return $this->content;
+			}
+
+			public function gettime(){
+				return $this->time;
+			}
+
+			public function getidcomment(){
+				return $this->id_comment;
+			}
+
+		}
+
 		include 'DBconnect.php';
+
 		$data = array();
 		$datalanjutan = array();
+		$comment = array();
+		$addcomment = array();
+
 		$query = "SELECT * FROM data_user";
 		$query2 = "SELECT * FROM data_user_lanjutan";
+		$query3 = "SELECT * FROM comment";
+		$query4 = "SELECT * FROM add_comment";
+
 		$result = $db->query($query);
 		foreach($result as $row)
 		{
@@ -94,6 +172,7 @@
 						new datauser($row['username'],$row['nama_depan'],$row['nama_belakang'],
 						$row['jenis_kelamin']));
 		}
+
 		$result2 = $db->query($query2);
 		foreach ($result2 as $row) 
 		{
@@ -101,6 +180,21 @@
 						new datalanjutan($row['username'],$row['profile_pic'],$row['alamat'],
 						$row['motto'],$row['tempat_lahir'],$row['tanggal_lahir'],$row['bio']));
 		}
+
+		$result3 = $db->query($query3);
+		foreach ($result3 as $row) 
+		{
+			array_push($comment,
+						new comment($row['username'],$row['comment'],$row['time'],$row['id_comment']));
+		}
+
+		$result4 = $db->query($query4);
+		foreach ($result4 as $row) 
+		{
+			array_push($addcomment,
+						new addcomment($row['id_add'],$row['content'],$row['id_comment'],$row['username'],$row['time']));
+		}
+
 ?>
 </body>
 </html>

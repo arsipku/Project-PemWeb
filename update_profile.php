@@ -1,48 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<title>Database Mahasiswa</title>
-	<nav class="navbar navbar-default">
-		<div class= "container-fluid">
-			<div class = "navbar-header">
-				<h4 style = "color:grey;">Perbarui Profil Anda</h4>
-			</div>
-		</div>
-	</nav>
-</head>
-<body>
-	<?php
-		session_start();
-		include 'data.php';
-		include 'DBconnect.php';
-	?>
-	<div class = "container">
-		<h4>Update profile </h4>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="updateProfil_hiasan.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+		<title>Database Mahasiswa</title>
+
+	</head>
+	<body>
+
 		<?php
-	  		$gambar = $datalanjutan[$_SESSION['index']]->getprofile_pic();
-	    	echo"<img src='assets/$gambar' class='img-circle' height='65' width='65' alt='Avatar'>";
-	    	if(isset($_POST['submit'])) 
-	    	{
+			session_start();
+			include 'data.php';
+			include 'DBconnect.php';
+		?>
 
-	    		$profile = $_FILES['txtFile'];
-	    		$namadepan = $_POST['edtnamadepan'];
-	    		$namabelakang = $_POST['edtnamabelakang'];
-	    		$username =  $datalanjutan[$_SESSION['index']]->getusername();
-	    		$alamat = $_POST['alamat'];
-	    		$motto = $_POST['motto'];
-	    		$tmp_lahir = $_POST['tmp_lahir'];
-	    		$tgl_lahir = $_POST['tgl_lahir'];
-	    		$bio = $_POST['bio'];
+		<?php
+			$gambar = $datalanjutan[$_SESSION['index']]->getprofile_pic();
+			//echo"<img src='assets/$gambar' class='img-circle' height='65' width='65' alt='Avatar'>";
+			if(isset($_POST['submit'])) 
+			{
+				$profile = $_FILES['txtFile'];
+				$namadepan = $_POST['edtnamadepan'];
+				$namabelakang = $_POST['edtnamabelakang'];
+				$username =  $datalanjutan[$_SESSION['index']]->getusername();
+				$alamat = $_POST['alamat'];
+				$motto = $_POST['motto'];
+				$tmp_lahir = $_POST['tmp_lahir'];
+				$tgl_lahir = $_POST['tgl_lahir'];
+				$bio = $_POST['bio'];
 				//print_r($_FILES['txtFile']);
-		
-
-
 				if (!empty($profile))
 				{
 					$folderSimpan = "assets/";
@@ -119,47 +116,107 @@
 						echo "error";
 					}
 				}
-				 echo"<script>window.location.href='mainmenu.php';</script>";
+				echo "<script>
+						$(document).ready(function() {
+							swal({ 
+								title: 'Congratulation',
+								text: 'Your Profile has been updated!',
+								type: 'notif',
+								icon: 'success',
+								}).then(function() {
+								
+									window.location.href = 'mainmenu.php';
+								})});
+						</script>";
+
 				
+
 			}
-	    ?>
-		<form id="formUpdate" action = 'update_profile.php' method = 'POST' enctype='multipart/form-data'>
-			<div class = "form-group">
-				<span style = "display: inline;">perbarui Photo anda :</span> 
-				<input  type ='file' name='txtFile' >
+		?>
+
+		
+			<form action = 'update_profile.php' method = 'POST' enctype='multipart/form-data'>
+			<div class="container abu-abu">
+				
+				<div class="row abu-abu">
+					<!-- left column -->
+					<div class="col-md-3 abu-abu">
+						<div class="text-center abu-abu">
+						<?php echo"<img src='assets/$gambar' class='img-circle' height='120' width='120' alt='Avatar'>"; ?>
+
+							<h6>Upload a different photo..</h6>
+							
+							<input type="file" class="form-control" name = "txtFile">
+						</div>
+					</div>
+					
+					<!-- edit form column -->
+					<div class="col-md-9 personal-info abu-abu">
+					<h1>Edit Profile</h1>
+						<h3>Personal info</h3>
+						
+							<div class="form-group abu-abu">
+								<label class="col-lg-3 control-label">First name:</label>
+								<div class="col-lg-8 abu-abu">
+									<input id = "edtnamadepan" name = 'edtnamadepan' class="form-control" type="text" value="">
+								</div>
+							</div>
+
+							<div class="form-group abu-abu">
+								<label class="col-lg-3 control-label">Last name:</label>
+								<div class="col-lg-8 abu-abu">
+									<input id = "edtnamabelakang" name = 'edtnamabelakang' class="form-control" type="text" value="">
+								</div>
+							</div>
+
+							<div class="form-group abu-abu">
+								<label class="col-lg-3 control-label">Address:</label>
+								<div class="col-lg-8 abu-abu">
+									<textarea class="form-control" row="3" name='alamat' id = 'alamat'></textarea>
+								</div>
+							</div>
+
+							<div class="form-group abu-abu">
+								<label class="col-lg-3 control-label">Motto:</label>
+								<div class="col-lg-8 abu-abu">
+									<input id = "motto" class="form-control" type="text" name = 'motto' value="">
+								</div>
+							</div>
+
+							<div class="form-group abu-abu">
+								<label class="col-md-3 control-label">Place of Birth:</label>
+								<div class="col-md-8 abu-abu">
+									<input id = "tmp_lahir" name = 'tmp_lahir' class="form-control" type="text" value="">
+								</div>
+
+							</div>
+							<div class="form-group abu-abu">
+								<label class="col-md-3 control-label">Date of Birth:</label>
+								<div class="col-md-8 abu-abu">
+									<input id = "tgl_lahir" class="form-control" name = 'tgl_lahir' type="date" value="">
+								</div>
+
+							</div>
+							<div class="form-group abu-abu">
+								<label class="col-md-3 control-label">Biography:</label>
+								<div class="col-md-8 abu-abu">
+								<textarea class="form-control" row="3" name='bio' id = 'bio'></textarea>
+								</div>
+							</div>
+
+							<div class="form-group abu-abu">
+								<label class="col-md-3 control-label"></label>
+								<div class="col-md-8 abu-abu">
+									<input type="submit" class="btn btn-primary" value="Save" name = "submit">
+									
+						
+									<a href="mainmenu.php" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Cancel</a>
+									
+								</div>
+							</div>	
+					</div>
+				</div>
 			</div>
-			<br>
-			<span style = "display: inline;">perbarui Profil pribadi anda :</span>
-			<div class = "form-group">
-				<label for="edtnamadepan">Nama depan : </label>
-				<input  type = "text" id = "edtnamadepan" placeholder="Nama Depan" name = 'edtnamadepan'>
-			</div>
-			<div class = "form-group">
-				<label for="edtnamabelakang">Nama Belakang: </label>
-				<input  type = "text" id = "edtnamabelakang" placeholder="Nama Belakang" name = 'edtnamabelakang'>
-			</div>
-			<div class = "form-group">
-				<label for="alamat">Alamat : </label>
-				<textarea name='alamat' id = 'alamat' rows=\"10\" cols=\"30\"></textarea>
-			</div>
-			<div class = "form-group">
-				<label for="motto">Motto : </label>
-				<input  type = "text" id = "motto" placeholder="Motto" name = 'motto'>
-			</div>
-			<div class = "form-group">
-				<label for="tmp_lahir">Tempat_Lahir : </label>
-				<input  type = "text" id = "tmp_lahir" placeholder="Tempat_Lahir" name = 'tmp_lahir'>
-			</div>
-			<div class = "form-group">
-				<label for="tgl_lahir">Tanggal_Lahir : </label>
-				<input  type = "date" id = "tgl_lahir" placeholder="Tanggal_Lahir" name = 'tgl_lahir'>
-			</div>
-			<div class = "form-group">
-				<label for="bio">Biografi Sekilas : </label>
-				<textarea name='bio' id = 'bio' rows=\"10\" cols=\"30\"></textarea>
-			</div>
-			<input type='submit' value= 'Perbarui' class="btn btn-primary" name = 'submit'>
 		</form>
-	</div>
-</body>
+	</body>
 </html>
