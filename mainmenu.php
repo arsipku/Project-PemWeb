@@ -55,7 +55,7 @@
 	          <div class="panel panel-default text-left">
 	            <div class="panel-body">
 	            	<form action="mainmenu.php"	method="POST">
-	            		<textarea name="comment" id = "comment" rows="5" cols="85"></textarea>
+	            		<textarea name="comment" id = "comment" rows="5" cols="85" required="true"></textarea>
 			            <input class="btn btn-primary" style="float:right" type ="submit" name = "post" value="Post"> 
 	            	</form>     
 	            </div>
@@ -102,21 +102,25 @@
 			if(isset($_POST['post']))
 	      	{
 	      		$comment = $_POST['comment'];
-	      		$post = mysqli_query($db,"INSERT INTO comment
-				 VALUES(
-				'$getusername',
-				'$comment',
-				CURRENT_TIMESTAMP,
-				NULL
-				);");
-	      		if (!$post) {
-	      			# code...
-	      			echo("Error description: " . mysqli_error($db));
-	      		}
-	      		else
+	      		if (!empty($comment))
 	      		{
-	      			 echo "<script>window.location.href='mainmenu.php';</script>";
+		      		$post = mysqli_query($db,"INSERT INTO comment
+					 VALUES(
+					'$getusername',
+					'$comment',
+					CURRENT_TIMESTAMP,
+					NULL
+					);");
+		      		if (!$post) {
+		      			# code...
+		      			echo("Error description: " . mysqli_error($db));
+		      		}
+		      		else
+		      		{
+		      			 echo "<script>window.location.href='mainmenu.php';</script>";
+		      		}
 	      		}
+	      		
 	      	}
 	      	if (isset($_POST['submitreply'])) {
 				# code...
