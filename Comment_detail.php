@@ -38,9 +38,10 @@
 		foreach ($result1 as $row) {
 			# code...
 			echo "<br>";
-			echo $row['comment'];
-		}
 
+			echo "<h3>".$row['comment']."</h3>";
+		}
+		echo "<br><h5> add a comment : </h5>";
 
 		if (isset($_POST['post'])) {
 			$var_id = $_SESSION['id'];
@@ -73,19 +74,29 @@
 	?>
 
 	<form action = "Comment_detail.php" method = 'POST'>
-		<textarea name = "comment" name = "comment" rows = "5" cols = "89"></textarea>
+		<textarea name = "comment" name = "comment" rows = "2" cols = "89"></textarea>
 		<button><a href="mainmenu.php">Kembali</a></button>		
 		<input type = "submit" name = "post" value= "Post a Comment">
 	</form>
 
 	<?php  
 		$value = $_SESSION['id'];
-		$query_show_content = "SELECT content FROM add_comment WHERE id_comment = '$value'";
+		$query_show_content = "SELECT a.content content, b.nama_depan as nama_depan, b.nama_belakang as nama_belakang, c.profile_pic as profile_pic FROM add_comment a, data_user b, data_user_lanjutan c WHERE a.username = b.username and b.username = c.username and id_comment = '$value' ";
 		$result_content = $db->query($query_show_content);
 		foreach ($result_content as $row) {
 			# code...
+			echo "<p>";
+			$var_img = $row['profile_pic'];
+			echo "<img src='assets/$var_img'  class='img-circle' height='65' width='65' alt='Avatar'>";
+			echo "</p>";
 			echo "<br>";
+			echo $row['nama_depan']; 
+			echo " ";
+			echo $row['nama_belakang'];
+			echo "   :  ";
 			echo $row['content'];
+			echo "<br>";
+			
 		}
 	?>
 
